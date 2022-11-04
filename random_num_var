@@ -1,0 +1,36 @@
+import random
+
+n = int(input("Enter number of images in folder"))
+p = [int(input("Enter a list of three percentages")) for item in range(3)]
+
+
+def rsp(n, p):
+    images = list(range(1, n + 1))  # list of numbers
+
+    x = round(n * p[0] / 100)
+    training_pr = round(x)
+
+    y = round((n - x) * p[1] / (100 - p[0]))
+    validating_pr = round(y)
+
+    z = round((n - (x + y)) * p[2] / (100 - (p[0] + p[1])))
+    testing_pr = round(z)
+
+    print("Training: ")
+    training_list = random.sample(images, training_pr)
+    print(training_list)
+
+    images2 = list(filter(lambda v: v not in training_list, images))
+
+    print("Validation: ")
+    validation_list = random.sample(images2, validating_pr)
+    print(validation_list)
+
+    print("Testing: ")
+    testing_list = random.sample(images2, testing_pr)
+    print(testing_list)
+
+    return training_list, validation_list, testing_list
+
+
+t, v, tst = rsp(n, p)
