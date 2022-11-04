@@ -1,0 +1,14 @@
+import os
+from PIL import Image
+import numpy as np
+
+dirname = '/Users/shoaf/Desktop/VIP Images'
+# final = []
+for fname in os.listdir(dirname):
+    if fname.endswith('.tif'):
+        print(os.path.join(fname))
+#     im = Image.open(os.path.join(dirname, fname))
+#     imarray = np.array(im)
+#     final.append(imarray)
+#
+# final = np.asarray(final) # shape = (60000,28,28)
